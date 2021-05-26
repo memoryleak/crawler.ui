@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nudorm.crawler.controller.Crawler">
+    <center>
+        <TableView fx:id="tableViewResults" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="tableColumnParent" prefWidth="175.0" text="Parent" />
+                <TableColumn fx:id="tableColumnSelf" prefWidth="175.0" text="URL" />
+                <TableColumn fx:id="tableColumnStatus" prefWidth="75.0" text="Status" />
+            </columns>
+        </TableView>
+    </center>
+    <top>
+        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <Label text="Parsing Threads" />
+                <Slider fx:id="sliderDesiredParsingThreads" majorTickUnit="10.0" max="30.0" minorTickCount="0" value="1.0" />
+                <Label fx:id="labelDesiredParsingThreads" text="1" />
+                <Separator orientation="VERTICAL" />
+                <Label text="Testing Threads" />
+                <Slider fx:id="sliderDesiredTestingThreads" majorTickUnit="10.0" max="30.0" minorTickCount="0" value="1.0" />
+                <Label fx:id="labelDesiredTestingThreads" text="1" />
+                <Separator minWidth="50.0" visible="false" />
+                <ToggleButton fx:id="toggleButtonRun" mnemonicParsing="false" onAction="#onToggleButtonRunAction" text="Run" />
+                <Separator minWidth="50.0" visible="false" />
+                <Button fx:id="buttonExport" mnemonicParsing="false" text="Export" onAction="#onButtonExportAction" />
+            </items>
+        </ToolBar>
+    </top>
+    <bottom>
+        <ToolBar BorderPane.alignment="CENTER">
+            <items>
+                <Label text="Parser Threads:" />
+                <Label fx:id="labelCurrentParsers" text="0" />
+                <Separator orientation="VERTICAL" />
+                <Label text="Tester Threads:" />
+                <Label fx:id="labelCurrentTesters" text="0" />
+
+                <Label text="Parser Queue:" />
+                <Label fx:id="labelQueueParsers" text="0" />
+                <Separator orientation="VERTICAL" />
+                <Label text="Tester Queue:" />
+                <Label fx:id="labelQueueTesters" text="0" />
+
+                <Separator orientation="VERTICAL" />
+                <Label text="Parsed:" />
+                <Label fx:id="labelParsed" text="0" />
+                <Separator orientation="VERTICAL" />
+                <Label text="Tested:" />
+                <Label fx:id="labelTested" text="0" />
+            </items>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+            </padding>
+        </ToolBar>
+    </bottom>
+    <right>
+        <VBox prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Start URL" />
+                <TextField fx:id="textStartUrl" text="https://www.nobelbiocare.com/es-es" />
+                <Label text="Filter Parsing" />
+                <TextArea fx:id="textAreaFilterParsing" text="www.nobelbiocare.com/es-es" />
+                <Label text="Filter Testing" />
+                <TextArea fx:id="textAreaFilterTesting" text="store.nobelbiocare.com" />
+            </children>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+    </right>
+</BorderPane>
